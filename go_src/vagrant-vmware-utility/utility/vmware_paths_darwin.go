@@ -9,10 +9,22 @@ import (
 	"strings"
 )
 
+var installDirs = []string{
+	"/Applications/VMware Fusion.app",
+	"/Applications/VMware Fusion Tech Preview.app",
+}
+
 func (v *VmwarePaths) Load() error {
-	v.InstallDir = "/Applications/VMware Fusion.app"
-	if _, err := os.Stat(v.InstallDir); err != nil {
-		v.logger.Trace("install path does not exist", "path", v.InstallDir)
+	for _, d := range installDirs {
+		v.logger.Trace("checking for vmware fusion install", "path", d)
+		if _, err := os.Stat(d); err == nil {
+			v.logger.Trace("detected vmware fusion install", "path", d)
+			v.InstallDir = d
+			break
+		}
+	}
+	if v.InstallDir == "" {
+		v.logger.Trace("failed to locate vmware fusion install path")
 		return errors.New("Failed to locate VMware installation directory!")
 	}
 	v.BridgePid = "/var/run/vmnet-bridge.pid"

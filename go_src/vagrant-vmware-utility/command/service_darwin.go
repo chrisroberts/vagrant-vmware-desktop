@@ -43,6 +43,8 @@ const LAUNCHD_JOB = `<?xml version="1.0" encoding="UTF-8"?>
         <dict>
             <key>/Applications/VMware Fusion.app</key>
                 <true/>
+	          <key>/Applications/VMware Fusion Tech Preview.app</key>
+	              <true/>
         </dict>
     </dict>
     <key>RunAtLoad</key>
@@ -83,6 +85,8 @@ const LAUNCHD_STOP_JOB = `<?xml version="1.0" encoding="UTF-8"?>
         <key>PathState</key>
         <dict>
             <key>/Applications/VMware Fusion.app</key>
+              <false/>
+            <key>/Applications/VMware Fusion Tech Preview.app</key>
               <false/>
         </dict>
     </dict>
