@@ -20,7 +20,7 @@ fpm -p ${asset} \
     -C "${stage}" \
     --log error \
     --prefix '/' \
-    --maintainer "HashiCorp <support@hashicorp.com>" \
+    --maintainer "HashiCorp Vagrant Team <vagrant@hashicorp.com>" \
     --url "https://www.vagrantup.com/" \
     --epoch 1 \
     --deb-user root \
